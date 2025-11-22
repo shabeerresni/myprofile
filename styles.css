@@ -394,6 +394,44 @@ main {
   align-items: start;
 }
 
+.contact-image-wrapper {
+  position: relative;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: calc(var(--radius) * 0.8);
+  border: 1px solid var(--border);
+  box-shadow: 0 15px 35px rgba(5, 1, 20, 0.5);
+  display: block;
+}
+
+.contact-text-link {
+  position: absolute;
+  /* Adjust these values to position the clickable area over "Contact" text */
+  /* Current: top-left area - adjust top, left, width, height as needed */
+  top: 2%;
+  left: 2%;
+  width: 25%;
+  height: 12%;
+  cursor: pointer;
+  z-index: 2;
+  background: transparent;
+  border: none;
+  transition: background 0.2s ease;
+}
+
+.contact-text-link:hover {
+  background: rgba(255, 77, 166, 0.15);
+  border-radius: 4px;
+}
+
 .cta-buttons {
   display: flex;
   flex-direction: column;
