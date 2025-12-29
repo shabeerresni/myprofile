@@ -514,5 +514,22 @@ textarea:focus {
   .panel {
     padding: 2rem;
   }
+
+  .featured-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .featured-wrapper .about-media {
+    order: -1;
+    align-self: center;
+    margin-bottom: 1rem;
+  }
+
+  .featured-wrapper > div:first-child {
+    order: 1;
+  }
 }
 
