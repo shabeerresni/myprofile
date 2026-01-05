@@ -387,6 +387,18 @@ main {
   letter-spacing: 0.08em;
 }
 
+.projects .project-card a {
+  color: var(--accent-alt);
+  text-decoration: underline;
+  text-decoration-color: rgba(54, 197, 240, 0.4);
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+.projects .project-card a:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
 .project-banner {
   width: 100%;
   overflow: hidden;
