@@ -500,6 +500,22 @@ textarea:focus {
   font-size: 0.9rem;
 }
 
+.site-footer .btn {
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  box-shadow: 0 10px 25px rgba(255, 77, 166, 0.25);
+}
+
+.site-footer .btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.site-footer .btn:disabled:hover {
+  transform: none;
+}
+
 @media (max-width: 900px) {
   .main-nav {
     position: fixed;
