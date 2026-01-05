@@ -462,20 +462,42 @@
             window.scrollTo(0, 0);
             await new Promise(resolve => setTimeout(resolve, 500));
             
+            // Add a class to main for PDF-specific styling
+            element.classList.add('pdf-export');
+            await new Promise(resolve => setTimeout(resolve, 200));
+            
             const opt = {
               margin: [10, 10, 10, 10],
               filename: `Shabeer_Mohamed_Portfolio_${new Date().getFullYear()}.pdf`,
               image: { type: "jpeg", quality: 0.95 },
               enableLinks: false,
               html2canvas: { 
-                scale: 1.5,
+                scale: 1.8,
                 useCORS: true,
                 logging: false,
                 backgroundColor: "#050114",
                 letterRendering: true,
                 allowTaint: false,
                 scrollX: 0,
-                scrollY: 0
+                scrollY: 0,
+                removeContainer: true,
+                onclone: function(clonedDoc) {
+                  // Ensure cloned document has proper styling for PDF
+                  const clonedMain = clonedDoc.querySelector('main');
+                  if (clonedMain) {
+                    clonedMain.style.padding = "2rem";
+                    clonedMain.style.background = "#050114";
+                    clonedMain.style.width = "100%";
+                    clonedMain.style.maxWidth = "100%";
+                  }
+                  
+                  // Ensure images are properly sized
+                  const images = clonedDoc.querySelectorAll('img');
+                  images.forEach(img => {
+                    img.style.maxWidth = "100%";
+                    img.style.height = "auto";
+                  });
+                }
               },
               jsPDF: { 
                 unit: "mm", 
@@ -484,13 +506,18 @@
                 compress: true
               },
               pagebreak: { 
-                mode: ["avoid-all"],
-                avoid: [".hero"]
+                mode: ["avoid-all", "css"],
+                avoid: [".hero", "h2", "h3", ".panel header"]
               }
             };
             
             // Generate PDF
-            await html2pdf().set(opt).from(element).save();
+            try {
+              await html2pdf().set(opt).from(element).save();
+            } finally {
+              // Remove PDF class
+              element.classList.remove('pdf-export');
+            }
             
             if (header) header.style.display = originalHeaderDisplay;
             if (footer) footer.style.display = originalFooterDisplay;

@@ -581,9 +581,74 @@ textarea:focus {
 }
 
 /* PDF Generation Styles */
+main.pdf-export {
+  padding: 2rem !important;
+  background: #050114 !important;
+  max-width: 100% !important;
+}
+
+main.pdf-export .panel {
+  page-break-inside: avoid;
+  page-break-after: auto;
+  margin-bottom: 2rem !important;
+  padding: 2rem !important;
+  break-inside: avoid;
+}
+
+main.pdf-export .hero {
+  page-break-after: avoid;
+  break-after: avoid;
+  margin-bottom: 2rem !important;
+}
+
+main.pdf-export .hero-photo img {
+  max-width: 300px !important;
+}
+
+main.pdf-export .about-media img,
+main.pdf-export .project-banner img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+main.pdf-export section {
+  page-break-inside: avoid;
+  break-inside: avoid;
+  margin-bottom: 2rem !important;
+}
+
+main.pdf-export h2,
+main.pdf-export h3 {
+  page-break-after: avoid;
+  break-after: avoid;
+  margin-top: 1.5rem !important;
+  margin-bottom: 1rem !important;
+}
+
+main.pdf-export .timeline article,
+main.pdf-export .project-card {
+  page-break-inside: avoid;
+  break-inside: avoid;
+  margin-bottom: 1.5rem !important;
+}
+
+main.pdf-export ul,
+main.pdf-export ol {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+main.pdf-export img {
+  max-width: 100% !important;
+  height: auto !important;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
 @media print {
   @page {
     margin: 10mm;
+    size: A4;
   }
   
   main {
