@@ -387,6 +387,17 @@ main {
   letter-spacing: 0.08em;
 }
 
+.project-banner {
+  width: 100%;
+  overflow: hidden;
+}
+
+.project-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -498,6 +509,17 @@ textarea:focus {
   }
 }
 
+@media (max-width: 1024px) {
+  .project-banner {
+    margin: 1.25rem auto 1.75rem !important;
+  }
+
+  .project-banner img {
+    max-width: 100% !important;
+    border-radius: calc(var(--radius) * 0.9) !important;
+  }
+}
+
 @media (max-width: 600px) {
   .site-header {
     padding: 1rem 5vw;
@@ -513,6 +535,20 @@ textarea:focus {
 
   .panel {
     padding: 2rem;
+  }
+
+  .project-banner {
+    margin: 1rem auto 1.5rem !important;
+  }
+
+  .project-banner img {
+    max-width: 100% !important;
+    border-radius: calc(var(--radius) * 0.8) !important;
+    border-width: 2px !important;
+  }
+
+  .projects .project-card {
+    padding: 1.5rem;
   }
 }
 
