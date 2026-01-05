@@ -48,21 +48,39 @@ if (contactForm) {
     formStatus.style.color = "#36c5f0";
 
     try {
+      // Get form data and set _replyto for Formspree
+      const formData = new FormData(contactForm);
+      const userEmail = formData.get("email");
+      if (userEmail) {
+        formData.set("_replyto", userEmail);
+      }
+
       const response = await fetch(contactForm.action, {
         method: "POST",
         headers: { Accept: "application/json" },
-        body: new FormData(contactForm),
+        body: formData,
       });
+
+      let responseData;
+      try {
+        responseData = await response.json();
+      } catch (e) {
+        responseData = { error: "Invalid response from server" };
+      }
 
       if (response.ok) {
         contactForm.reset();
-        formStatus.textContent = "Message sent! I’ll reply soon.";
+        formStatus.textContent = "Message sent! I'll reply soon.";
         formStatus.style.color = "#36f0a0";
       } else {
-        throw new Error("Form submission failed");
+        const errorMsg = responseData.error || responseData.message || "Form submission failed";
+        console.error("Formspree error:", errorMsg, responseData);
+        formStatus.textContent = `Error: ${errorMsg}. Please email directly at shabeer_mk@outlook.com`;
+        formStatus.style.color = "#ff4da6";
       }
     } catch (error) {
-      formStatus.textContent = "Something went wrong. Try again or email me.";
+      console.error("Form submission error:", error);
+      formStatus.textContent = "Network error. Please email directly at shabeer_mk@outlook.com";
       formStatus.style.color = "#ff4da6";
     }
   });
@@ -72,3 +90,52 @@ if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
+// PDF Download functionality
+const downloadPdfBtn = document.getElementById("download-pdf");
+
+if (downloadPdfBtn) {
+  downloadPdfBtn.addEventListener("click", async () => {
+    // Disable button during generation
+    downloadPdfBtn.disabled = true;
+    downloadPdfBtn.textContent = "⏳ Generating PDF...";
+    
+    try {
+      // Get the main content element
+      const element = document.querySelector("main");
+      
+      // Configure PDF options
+      const opt = {
+        margin: [10, 10, 10, 10],
+        filename: `Shabeer_Mohamed_Portfolio_${new Date().getFullYear()}.pdf`,
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { 
+          scale: 2,
+          useCORS: true,
+          logging: false,
+          backgroundColor: "#050114"
+        },
+        jsPDF: { 
+          unit: "mm", 
+          format: "a4", 
+          orientation: "portrait",
+          compress: true
+        },
+        pagebreak: { mode: ["avoid-all", "css", "legacy"] }
+      };
+      
+      // Generate and download PDF
+      await html2pdf().set(opt).from(element).save();
+      
+      // Reset button
+      downloadPdfBtn.disabled = false;
+      downloadPdfBtn.textContent = "📄 Download as PDF";
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+      downloadPdfBtn.disabled = false;
+      downloadPdfBtn.textContent = "❌ Error - Try Again";
+      setTimeout(() => {
+        downloadPdfBtn.textContent = "📄 Download as PDF";
+      }, 3000);
+    }
+  });
+}
