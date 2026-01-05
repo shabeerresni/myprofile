@@ -458,17 +458,24 @@
               throw new Error("Main content element not found");
             }
             
+            // Scroll to top and wait for rendering
+            window.scrollTo(0, 0);
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
             const opt = {
-              margin: [15, 15, 15, 15],
+              margin: [10, 10, 10, 10],
               filename: `Shabeer_Mohamed_Portfolio_${new Date().getFullYear()}.pdf`,
-              image: { type: "jpeg", quality: 0.98 },
+              image: { type: "jpeg", quality: 0.95 },
+              enableLinks: false,
               html2canvas: { 
-                scale: 2,
+                scale: 1.5,
                 useCORS: true,
                 logging: false,
                 backgroundColor: "#050114",
-                windowWidth: element.scrollWidth,
-                windowHeight: element.scrollHeight
+                letterRendering: true,
+                allowTaint: false,
+                scrollX: 0,
+                scrollY: 0
               },
               jsPDF: { 
                 unit: "mm", 
@@ -476,9 +483,13 @@
                 orientation: "portrait",
                 compress: true
               },
-              pagebreak: { mode: ["avoid-all", "css", "legacy"] }
+              pagebreak: { 
+                mode: ["avoid-all"],
+                avoid: [".hero"]
+              }
             };
             
+            // Generate PDF
             await html2pdf().set(opt).from(element).save();
             
             if (header) header.style.display = originalHeaderDisplay;

@@ -580,3 +580,23 @@ textarea:focus {
   }
 }
 
+/* PDF Generation Styles */
+@media print {
+  @page {
+    margin: 10mm;
+  }
+  
+  main {
+    page-break-inside: avoid;
+  }
+  
+  .panel {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+  
+  .hero {
+    page-break-after: avoid;
+  }
+}
+
