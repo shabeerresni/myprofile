@@ -139,3 +139,115 @@ if (downloadPdfBtn) {
     }
   });
 }
+
+// Slideshow functionality
+(function() {
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  const prevBtn = document.querySelector('.slideshow-prev');
+  const nextBtn = document.querySelector('.slideshow-next');
+  let currentSlide = 0;
+  let slideInterval;
+
+  if (slides.length === 0) return;
+
+  function showSlide(index) {
+    // Remove active class from all slides and dots
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    // Add active class to current slide and dot
+    if (slides[index]) {
+      slides[index].classList.add('active');
+    }
+    if (dots[index]) {
+      dots[index].classList.add('active');
+    }
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  function startSlideshow() {
+    slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+  }
+
+  function stopSlideshow() {
+    clearInterval(slideInterval);
+  }
+
+  // Initialize slideshow
+  showSlide(0);
+  startSlideshow();
+
+  // Event listeners
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      stopSlideshow();
+      nextSlide();
+      startSlideshow();
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      stopSlideshow();
+      prevSlide();
+      startSlideshow();
+    });
+  }
+
+  // Dot navigation
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      stopSlideshow();
+      currentSlide = index;
+      showSlide(currentSlide);
+      startSlideshow();
+    });
+  });
+
+  // Pause on hover
+  const slideshowContainer = document.querySelector('.slideshow-container');
+  if (slideshowContainer) {
+    slideshowContainer.addEventListener('mouseenter', stopSlideshow);
+    slideshowContainer.addEventListener('mouseleave', startSlideshow);
+  }
+
+  // Touch swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  if (slideshowContainer) {
+    slideshowContainer.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopSlideshow();
+    });
+
+    slideshowContainer.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+      startSlideshow();
+    });
+  }
+
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        nextSlide(); // Swipe left - next slide
+      } else {
+        prevSlide(); // Swipe right - previous slide
+      }
+    }
+  }
+})();
