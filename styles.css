@@ -390,23 +390,30 @@ main {
   align-items: center;
 }
 
+.about-wrapper {
+  display: block;
+}
+
 .about-media {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   justify-self: center;
+  margin: 2rem auto 3rem;
 }
 
 .about-media img {
   width: 100%;
-  max-width: 360px;
+  max-width: 800px;
+  height: auto;
   border-radius: calc(var(--radius) * 1.1);
   border: 3px solid transparent;
   background: linear-gradient(var(--card), var(--card)) padding-box,
-    linear-gradient(135deg, var(--accent), var(--accent-alt), var(--accent-warm)) border-box;
-  box-shadow: 0 25px 45px rgba(5, 1, 20, 0.6), 0 0 60px rgba(255, 77, 166, 0.2);
-  object-fit: cover;
+    linear-gradient(135deg, var(--accent), var(--accent-alt)) border-box;
+  box-shadow: 0 25px 50px rgba(5, 1, 20, 0.4);
+  object-fit: contain;
+  display: block;
 }
 
 .about-content p {
@@ -670,9 +677,27 @@ textarea:focus {
 
 /* Laptop/Desktop specific styles */
 @media (min-width: 1025px) {
-  .about-media img[src="About.png"] {
-    max-width: 536px !important; /* Reduced by 33% from 800px */
-    height: auto !important;
+  .about-wrapper {
+    position: relative;
+  }
+
+  .about-media {
+    float: right;
+    margin: 0 0 1.5rem 2rem;
+    max-width: 536px; /* Reduced by 33% from 800px */
+    width: auto;
+    display: block;
+  }
+
+  .about-media img {
+    max-width: 100%;
+    width: 536px;
+    height: auto;
+  }
+
+  .about-content {
+    margin-right: 0;
+    overflow: hidden; /* Allows text to wrap around floated image */
   }
 }
 
