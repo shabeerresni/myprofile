@@ -425,6 +425,17 @@ main {
   height: auto;
 }
 
+.skills-image {
+  width: 100%;
+  overflow: hidden;
+}
+
+.skills-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -562,6 +573,15 @@ textarea:focus {
     border-radius: calc(var(--radius) * 0.9) !important;
   }
 
+  .skills-image {
+    margin: 1.25rem auto 1.75rem !important;
+  }
+
+  .skills-image img {
+    max-width: 100% !important;
+    border-radius: calc(var(--radius) * 0.9) !important;
+  }
+
   .hero-ctas {
     gap: 0.875rem;
   }
@@ -604,6 +624,16 @@ textarea:focus {
   }
 
   .project-banner img {
+    max-width: 100% !important;
+    border-radius: calc(var(--radius) * 0.8) !important;
+    border-width: 2px !important;
+  }
+
+  .skills-image {
+    margin: 1rem auto 1.5rem !important;
+  }
+
+  .skills-image img {
     max-width: 100% !important;
     border-radius: calc(var(--radius) * 0.8) !important;
     border-width: 2px !important;
