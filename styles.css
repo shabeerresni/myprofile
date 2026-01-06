@@ -138,7 +138,8 @@ main {
 
 .hero-banner-slideshow {
   width: 100%;
-  margin-bottom: 2rem;
+  max-width: 100%;
+  margin: 0 auto 2rem;
   border-radius: calc(var(--radius) * 1.2);
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(5, 1, 20, 0.3);
@@ -667,6 +668,14 @@ textarea:focus {
   }
 }
 
+/* Laptop/Desktop specific styles */
+@media (min-width: 1025px) {
+  .about-media img[src="About.png"] {
+    max-width: 536px !important; /* Reduced by 33% from 800px */
+    height: auto !important;
+  }
+}
+
 @media (max-width: 1024px) {
   .project-banner {
     margin: 1.25rem auto 1.75rem !important;
@@ -726,6 +735,7 @@ textarea:focus {
 
   .hero-banner-slideshow {
     margin-bottom: 1.5rem;
+    max-width: 240px; /* Match hero-photo width on mobile */
   }
 
   .slideshow-container {
