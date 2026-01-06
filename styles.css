@@ -687,6 +687,7 @@ textarea:focus {
     max-width: 536px; /* Reduced by 33% from 800px */
     width: auto;
     display: block;
+    shape-outside: margin-box; /* Better text wrapping around image */
   }
 
   .about-media img {
@@ -697,7 +698,16 @@ textarea:focus {
 
   .about-content {
     margin-right: 0;
-    overflow: hidden; /* Allows text to wrap around floated image */
+    overflow: visible; /* Allow text to wrap around floated image */
+  }
+
+  .about-content p {
+    text-align: justify; /* Better text distribution */
+  }
+
+  .highlights-intro {
+    margin-top: 1.5rem !important; /* Add spacing before Highlights include */
+    margin-bottom: 0.5rem !important;
   }
 }
 
