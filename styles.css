@@ -681,7 +681,8 @@ textarea:focus {
     position: relative;
   }
 
-  .about-media {
+  /* Only apply float to about-media within about-wrapper (About section) */
+  .about-wrapper .about-media {
     float: right;
     margin: 0 0 1.5rem 2rem;
     max-width: 536px; /* Reduced by 33% from 800px */
@@ -690,7 +691,7 @@ textarea:focus {
     shape-outside: margin-box; /* Better text wrapping around image */
   }
 
-  .about-media img {
+  .about-wrapper .about-media img {
     max-width: 100%;
     width: 536px;
     height: auto;
@@ -708,6 +709,22 @@ textarea:focus {
   .highlights-intro {
     margin-top: 1.5rem !important; /* Add spacing before Highlights include */
     margin-bottom: 0.5rem !important;
+  }
+
+  /* Ensure featured section image stays centered */
+  #featured .about-media {
+    float: none !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 2rem auto 3rem !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  #featured .about-media img {
+    max-width: 800px !important;
+    width: 100% !important;
   }
 }
 
