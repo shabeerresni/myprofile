@@ -77,6 +77,17 @@ p {
   display: grid;
   place-items: center;
   font-weight: 700;
+  overflow: hidden;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
 }
 
 .main-nav {
