@@ -760,6 +760,11 @@ textarea:focus {
     padding-bottom: 37.5%; /* Reduced by 25% from 50% for iPad */
   }
 
+  .slide img {
+    width: 100% !important;
+    object-fit: cover !important; /* Fill the banner width on iPad */
+  }
+
   .slideshow-prev,
   .slideshow-next {
     padding: 0.75rem 1rem;
@@ -792,6 +797,11 @@ textarea:focus {
 
   .slideshow-container {
     padding-bottom: 60%; /* Original height for mobile */
+  }
+
+  .slide img {
+    width: 100% !important;
+    object-fit: cover !important; /* Fill the banner width on mobile */
   }
 
   .slideshow-prev,
