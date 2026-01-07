@@ -70,16 +70,12 @@ p {
 }
 
 .logo {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-alt));
-  display: grid;
-  place-items: center;
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 700;
-  overflow: hidden;
-  padding: 4px;
-  box-sizing: border-box;
 }
 
 .logo img {
