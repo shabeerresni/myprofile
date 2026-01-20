@@ -510,6 +510,40 @@ main {
   box-shadow: 0 15px 35px rgba(5, 1, 20, 0.5);
 }
 
+.project-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0 1.75rem;
+}
+
+.project-images .project-image {
+  flex: 1 1 0;
+  max-width: 48%;
+  border-radius: calc(var(--radius) * 0.6);
+  border: 2px solid transparent;
+  background: linear-gradient(var(--card), var(--card)) padding-box,
+    linear-gradient(135deg, var(--accent), var(--accent-alt)) border-box;
+  box-shadow: 0 15px 35px rgba(5, 1, 20, 0.5);
+  display: block;
+}
+
+.project-images .project-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .project-images {
+    justify-content: center;
+  }
+
+  .project-images .project-image {
+    max-width: 100%;
+  }
+}
+
 .projects .tag {
   align-self: flex-start;
   padding: 0.4rem 0.9rem;
