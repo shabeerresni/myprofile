@@ -519,6 +519,7 @@ main {
 
 .project-images .project-image {
   flex: 1 1 0;
+  min-width: 0;
   max-width: 48%;
   width: 100%;
   height: auto;
@@ -527,9 +528,8 @@ main {
   background: linear-gradient(var(--card), var(--card)) padding-box,
     linear-gradient(135deg, var(--accent), var(--accent-alt)) border-box;
   box-shadow: 0 15px 35px rgba(5, 1, 20, 0.5);
-  width: 100%;
-  height: auto;
   display: block;
+  object-fit: contain;
 }
 
 @media (max-width: 900px) {
