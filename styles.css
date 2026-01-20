@@ -500,7 +500,7 @@ main {
 
 .project-thumb {
   float: right;
-  width: min(55%, 320px);
+  width: min(70%, 420px);
   border-radius: calc(var(--radius) * 0.6);
   border: 2px solid transparent;
   background: linear-gradient(var(--card), var(--card)) padding-box,
