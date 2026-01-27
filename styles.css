@@ -672,9 +672,21 @@ textarea:focus {
 
 .site-footer {
   text-align: center;
-  padding: 2rem 1rem 3rem;
+  padding: 2.5rem 1rem 3rem;
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.footer-logo img {
+  max-width: 80px; /* ~50% of original 160px-style logo */
+  height: auto;
+  display: block;
 }
 
 .site-footer .btn {
