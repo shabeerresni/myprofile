@@ -251,7 +251,7 @@ main {
 
 .hero-photo img {
   width: 100%;
-  max-width: 320px;
+  max-width: 426px; /* 387px + 10% */
   height: auto;
   border-radius: var(--radius);
   border: 3px solid transparent;
@@ -882,7 +882,7 @@ textarea:focus {
   }
 
   .hero-photo img {
-    max-width: 240px;
+    max-width: 319px; /* 290px + 10% */
   }
 
   .hero-ctas {
