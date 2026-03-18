@@ -698,14 +698,15 @@ form {
 
 /* Advisory collage (board roles) */
 .advisory-collage-wrap {
-  margin: 1rem 0 1.25rem;
+  margin: 1rem auto 1.25rem;
   width: 100%;
   display: block;
+  padding: 0 0.25rem;
 }
 
 .advisory-collage {
   width: 100%;
-  max-width: 560px;
+  max-width: 440px;
   height: auto;
   display: block;
   margin: 0 auto;
@@ -726,13 +727,6 @@ form {
 
   .advisory-collage {
     max-width: none;
-  }
-}
-
-@media (max-width: 900px) {
-  .advisory-collage-wrap {
-    float: none;
-    margin: 1rem auto 1.25rem;
   }
 }
 
