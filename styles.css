@@ -23,7 +23,7 @@
 
 body {
   margin: 0;
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   background: radial-gradient(900px 520px at 15% 10%, rgba(201, 168, 76, 0.12), transparent 60%),
     radial-gradient(900px 520px at 85% 20%, rgba(255, 255, 255, 0.06), transparent 60%),
     var(--bg);
@@ -61,13 +61,13 @@ h1, h2, h3, p, li {
 h1,
 h2,
 h3 {
-  font-family: "Playfair Display", serif;
+  font-family: "Fraunces", serif;
   line-height: 1.2;
   margin: 0 0 0.5rem;
 }
 
 h4 {
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   margin: 0 0 0.5rem;
 }
 
@@ -109,7 +109,7 @@ p {
 }
 
 .wordmark {
-  font-family: "Playfair Display", serif;
+  font-family: "Fraunces", serif;
   font-weight: 700;
   font-size: 1.2rem;
   letter-spacing: 0.02em;
@@ -232,7 +232,7 @@ p {
 }
 
 .drawer-links a {
-  font-family: "Playfair Display", serif;
+  font-family: "Fraunces", serif;
   font-size: 1.5rem;
   color: rgba(255, 255, 255, 0.92);
 }
@@ -483,7 +483,7 @@ form {
 }
 
 .stat-value {
-  font-family: "Playfair Display", serif;
+  font-family: "Fraunces", serif;
   font-size: clamp(1.8rem, 3vw, 2.6rem);
   color: var(--color-gold);
   letter-spacing: 0.02em;
