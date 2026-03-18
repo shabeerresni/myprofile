@@ -570,16 +570,22 @@ form {
 }
 
 .company-logo {
-  width: 34px;
-  height: 34px;
+  height: 22px;
+  width: auto;
+  max-width: 108px;
   object-fit: contain;
   display: inline-block;
+  background: rgba(255, 255, 255, 0.96);
+  padding: 6px 10px;
+  border-radius: 12px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
 }
 
 @media (max-width: 600px) {
   .company-logo {
-    width: 30px;
-    height: 30px;
+    height: 24px;
+    max-width: 120px;
+    padding: 7px 12px;
   }
 }
 
