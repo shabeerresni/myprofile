@@ -48,12 +48,18 @@ h1, h2, h3, p, li {
 
 /* Reveal animations */
 .reveal {
+  /* Default to visible so sections never disappear if JS doesn't run */
+  opacity: 1;
+  transform: none;
+}
+
+.js-ready .reveal {
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 520ms ease, transform 520ms ease;
 }
 
-.reveal.is-in {
+.js-ready .reveal.is-in {
   opacity: 1;
   transform: translateY(0);
 }

@@ -93,6 +93,9 @@ animTargets.forEach((el) => revealObserver.observe(el));
 const counterScope = document.querySelector("[data-counter-scope]");
 const countEls = counterScope?.querySelectorAll("[data-count-to]") || [];
 
+// Enable reveal animations only after JS is running.
+document.body.classList.add("js-ready");
+
 const runCounters = () => {
   countEls.forEach((el) => {
     if (el.dataset.ran === "true") return;
