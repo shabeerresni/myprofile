@@ -562,6 +562,27 @@ form {
   margin-bottom: 0.75rem;
 }
 
+.meta.meta-company {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.company-logo {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  display: inline-block;
+}
+
+@media (max-width: 600px) {
+  .company-logo {
+    width: 30px;
+    height: 30px;
+  }
+}
+
 .timeline ul {
   padding-left: 1rem;
   margin: 0;
