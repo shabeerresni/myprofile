@@ -484,6 +484,36 @@ form {
   white-space: nowrap;
 }
 
+/* Mobile-first hero adjustments to prevent right-edge clipping */
+@media (max-width: 768px) {
+  .hero-premium {
+    overflow-x: visible;
+  }
+
+  .hero-layout {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    padding: 0 0 2.75rem;
+  }
+
+  .profile-wrap {
+    margin-left: 0;
+    margin-right: 0;
+    width: min(320px, 86vw);
+    margin-inline: auto;
+  }
+
+  .profile-badge {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 18px;
+    max-width: 90%;
+    white-space: normal;
+    text-align: center;
+  }
+}
+
 .hero-stats {
   border-top: 1px solid rgba(201, 168, 76, 0.18);
   background: rgba(10, 22, 40, 0.92);
