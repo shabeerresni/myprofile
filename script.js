@@ -1,28 +1,60 @@
-const navToggle = document.querySelector(".nav-toggle");
-const nav = document.querySelector(".main-nav");
+const header = document.querySelector("[data-header]");
+const nav = document.querySelector("[data-nav]");
+const navToggle = document.querySelector("[data-nav-toggle]");
+const drawer = document.querySelector("[data-drawer]");
+const drawerClose = document.querySelector("[data-drawer-close]");
+const drawerLinks = document.querySelectorAll(".drawer-links a");
+const headerDownload = document.querySelector("[data-download-cv]");
+
 const navLinks = document.querySelectorAll(".main-nav a");
 const sections = document.querySelectorAll("main section");
 const contactForm = document.getElementById("contact-form");
 const formStatus = document.querySelector(".form-status");
 const yearEl = document.getElementById("year");
 
-const closeNav = () => nav?.classList.remove("open");
+const setDrawerOpen = (isOpen) => {
+  if (!drawer) return;
+  drawer.classList.toggle("is-open", isOpen);
+  drawer.setAttribute("aria-hidden", String(!isOpen));
+  document.documentElement.style.overflow = isOpen ? "hidden" : "";
+};
 
-navToggle?.addEventListener("click", () => {
-  nav?.classList.toggle("open");
+navToggle?.addEventListener("click", () => setDrawerOpen(true));
+drawerClose?.addEventListener("click", () => setDrawerOpen(false));
+drawer?.addEventListener("click", (e) => {
+  if (e.target === drawer) setDrawerOpen(false);
 });
+
+const handleNavClick = (event, href) => {
+  event.preventDefault();
+  const target = href ? document.querySelector(href) : null;
+  if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+};
 
 navLinks.forEach((link) => {
+  link.addEventListener("click", (event) => handleNavClick(event, link.getAttribute("href")));
+});
+
+drawerLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
-    event.preventDefault();
-    const targetId = link.getAttribute("href");
-    const section = targetId ? document.querySelector(targetId) : null;
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-    closeNav();
+    handleNavClick(event, link.getAttribute("href"));
+    setDrawerOpen(false);
   });
 });
+
+headerDownload?.addEventListener("click", () => {
+  const btn = document.getElementById("download-pdf");
+  btn?.click();
+  setDrawerOpen(false);
+});
+
+// Sticky header: transparent -> solid on scroll
+const setHeaderSolid = () => {
+  if (!header) return;
+  header.classList.toggle("is-solid", window.scrollY > 10);
+};
+setHeaderSolid();
+window.addEventListener("scroll", setHeaderSolid, { passive: true });
 
 const observer = new IntersectionObserver(
   (entries) => {
@@ -38,6 +70,63 @@ const observer = new IntersectionObserver(
 );
 
 sections.forEach((section) => observer.observe(section));
+
+// Entrance animations
+const animTargets = document.querySelectorAll(".panel, .timeline article, .skill-card, .highlight-grid article, .projects .project-card");
+animTargets.forEach((el) => el.classList.add("reveal"));
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-in");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.12, rootMargin: "0px 0px -10% 0px" }
+);
+
+animTargets.forEach((el) => revealObserver.observe(el));
+
+// Animated counters (hero stats)
+const counterScope = document.querySelector("[data-counter-scope]");
+const countEls = counterScope?.querySelectorAll("[data-count-to]") || [];
+
+const runCounters = () => {
+  countEls.forEach((el) => {
+    if (el.dataset.ran === "true") return;
+    el.dataset.ran = "true";
+
+    const to = Number(el.getAttribute("data-count-to") || "0");
+    const suffix = el.getAttribute("data-count-suffix") || "";
+    const start = 0;
+    const duration = 900;
+    const t0 = performance.now();
+
+    const tick = (t) => {
+      const p = Math.min(1, (t - t0) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const val = Math.round(start + (to - start) * eased);
+      el.textContent = `${val}${suffix}`;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+};
+
+if (counterScope) {
+  const counterObserver = new IntersectionObserver(
+    (entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        runCounters();
+        counterObserver.disconnect();
+      }
+    },
+    { threshold: 0.35 }
+  );
+  counterObserver.observe(counterScope);
+}
 
 if (contactForm) {
   contactForm.addEventListener("submit", async (event) => {
