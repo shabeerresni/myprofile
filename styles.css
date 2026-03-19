@@ -1210,14 +1210,16 @@ textarea:focus {
   /* Reduce side margins for readability on mobile */
   #skills.panel,
   #recommendations.panel,
-  #projects.panel {
+  #projects.panel,
+  #experience.panel {
     padding-left: 1.25rem !important;
     padding-right: 1.25rem !important;
   }
 
   #skills.panel,
   #recommendations.panel,
-  #projects.panel {
+  #projects.panel,
+  #experience.panel {
     max-width: 100%;
   }
 
