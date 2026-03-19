@@ -582,22 +582,22 @@ form {
 }
 
 .company-logo {
-  height: 22px;
+  height: 30px;
   width: auto;
-  max-width: 108px;
+  max-width: 170px;
   object-fit: contain;
   display: inline-block;
   background: rgba(255, 255, 255, 0.96);
-  padding: 6px 10px;
+  padding: 4px 8px;
   border-radius: 12px;
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
 }
 
 @media (max-width: 600px) {
   .company-logo {
-    height: 24px;
-    max-width: 120px;
-    padding: 7px 12px;
+    height: 28px;
+    max-width: 160px;
+    padding: 4px 8px;
   }
 }
 
@@ -997,6 +997,72 @@ textarea:focus {
   max-width: 160px; /* doubled size for footer logo */
   height: auto;
   display: block;
+}
+
+.footer-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.footer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(201, 168, 76, 0.08);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.footer-badge:hover {
+  transform: translateY(-2px);
+  background: rgba(201, 168, 76, 0.14);
+  border-color: rgba(201, 168, 76, 0.55);
+}
+
+.footer-badge-icon {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(10, 22, 40, 0.65);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  color: var(--color-gold);
+  font-weight: 800;
+}
+
+.footer-badge-text {
+  font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  .footer-badges {
+    gap: 0.55rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .footer-badge {
+    padding: 0.55rem 0.8rem;
+  }
+
+  .footer-badge-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .footer-badge-text {
+    font-size: 0.9rem;
+  }
 }
 
 .site-footer .btn {
