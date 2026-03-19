@@ -338,7 +338,12 @@ form {
   display: grid;
   align-content: center;
   padding: 7.5rem 0 0;
-  background: var(--color-navy);
+  /* Professional wallpaper-style background (softened by gradient overlay) */
+  background:
+    linear-gradient(135deg, rgba(10, 22, 40, 0.95), rgba(10, 22, 40, 0.72)),
+    url(banner6.jpeg);
+  background-size: cover;
+  background-position: center;
   overflow: hidden;
 }
 
@@ -351,6 +356,7 @@ form {
 .hero-gridlines {
   position: absolute;
   inset: -40% -40%;
+  z-index: 1;
   background:
     linear-gradient(to right, rgba(201, 168, 76, 0.08) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(201, 168, 76, 0.08) 1px, transparent 1px);
@@ -374,7 +380,7 @@ form {
   width: var(--container);
   margin: 0 auto;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero-eyebrow {
@@ -524,7 +530,7 @@ form {
   border-top: 1px solid rgba(201, 168, 76, 0.18);
   background: rgba(10, 22, 40, 0.92);
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .stats-row {
