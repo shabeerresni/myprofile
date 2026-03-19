@@ -50,11 +50,11 @@ h1, h2, h3, p, li {
 .reveal {
   /* Default to visible so sections never disappear if JS doesn't run */
   opacity: 1;
-  transform: none;
+  transform: translateY(14px);
 }
 
 .js-ready .reveal {
-  opacity: 0;
+  opacity: 1;
   transform: translateY(14px);
   transition: opacity 520ms ease, transform 520ms ease;
 }
