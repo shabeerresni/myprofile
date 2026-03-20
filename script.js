@@ -182,54 +182,154 @@ if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
-// PDF Download functionality
-const downloadPdfBtn = document.getElementById("download-pdf");
+// PDF download (html2pdf.js) — single handler; library loaded before this script in index.html
+const PDF_CONTENT_PX = 700; // ~A4 printable width at 96dpi with margins
 
-if (downloadPdfBtn) {
+function initPdfDownload() {
+  const downloadPdfBtn = document.getElementById("download-pdf");
+  if (!downloadPdfBtn || downloadPdfBtn.dataset.pdfInit === "1") return;
+  downloadPdfBtn.dataset.pdfInit = "1";
+
   downloadPdfBtn.addEventListener("click", async () => {
-    // Disable button during generation
+    const originalText = downloadPdfBtn.textContent;
+
+    if (typeof html2pdf === "undefined") {
+      alert("PDF is still loading. Please wait a few seconds and try again.");
+      return;
+    }
+
     downloadPdfBtn.disabled = true;
     downloadPdfBtn.textContent = "⏳ Generating PDF...";
-    
-    try {
-      // Get the main content element
-      const element = document.querySelector("main");
-      
-      // Configure PDF options
-      const opt = {
-        margin: [10, 10, 10, 10],
-        filename: `Shabeer_Mohamed_Portfolio_${new Date().getFullYear()}.pdf`,
-        image: { type: "jpeg", quality: 0.98 },
-        html2canvas: { 
-          scale: 2,
-          useCORS: true,
-          logging: false,
-          backgroundColor: "#050114"
-        },
-        jsPDF: { 
-          unit: "mm", 
-          format: "a4", 
-          orientation: "portrait",
-          compress: true
-        },
-        pagebreak: { mode: ["avoid-all", "css", "legacy"] }
-      };
-      
-      // Generate and download PDF
-      await html2pdf().set(opt).from(element).save();
-      
-      // Reset button
+
+    const header = document.querySelector(".site-header");
+    const footer = document.querySelector(".site-footer");
+    const drawer = document.querySelector(".nav-drawer");
+    const prev = {
+      header: header?.style.display ?? "",
+      footer: footer?.style.display ?? "",
+      drawer: drawer?.style.display ?? "",
+    };
+    if (header) header.style.display = "none";
+    if (footer) footer.style.display = "none";
+    if (drawer) drawer.style.display = "none";
+
+    const element = document.querySelector("main");
+    if (!element) {
       downloadPdfBtn.disabled = false;
-      downloadPdfBtn.textContent = "📄 Download as PDF";
+      downloadPdfBtn.textContent = originalText;
+      if (header) header.style.display = prev.header;
+      if (footer) footer.style.display = prev.footer;
+      if (drawer) drawer.style.display = prev.drawer;
+      return;
+    }
+
+    window.scrollTo(0, 0);
+    element.classList.add("pdf-export");
+
+    await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+    await new Promise((r) => setTimeout(r, 250));
+
+    const imgs = Array.from(element.querySelectorAll("img"));
+    await Promise.all(
+      imgs.map((img) =>
+        img.complete
+          ? Promise.resolve()
+          : new Promise((resolve) => {
+              img.addEventListener("load", resolve, { once: true });
+              img.addEventListener("error", resolve, { once: true });
+            })
+      )
+    );
+
+    if (document.fonts?.ready) {
+      try {
+        await document.fonts.ready;
+      } catch (_) {
+        /* ignore */
+      }
+    }
+
+    const opt = {
+      margin: [12, 14, 14, 14],
+      filename: `Shabeer_Mohamed_Portfolio_${new Date().getFullYear()}.pdf`,
+      image: { type: "jpeg", quality: 0.9 },
+      enableLinks: true,
+      html2canvas: {
+        scale: 1.25,
+        useCORS: true,
+        allowTaint: false,
+        logging: false,
+        backgroundColor: "#0a1628",
+        letterRendering: true,
+        scrollX: 0,
+        scrollY: -window.scrollY,
+        windowWidth: PDF_CONTENT_PX,
+        onclone(clonedDoc) {
+          const html = clonedDoc.documentElement;
+          const body = clonedDoc.body;
+          if (html) {
+            html.style.width = `${PDF_CONTENT_PX}px`;
+            html.style.maxWidth = `${PDF_CONTENT_PX}px`;
+            html.style.overflow = "visible";
+          }
+          if (body) {
+            body.style.width = `${PDF_CONTENT_PX}px`;
+            body.style.maxWidth = `${PDF_CONTENT_PX}px`;
+            body.style.margin = "0";
+            body.style.padding = "0";
+            body.style.overflow = "visible";
+          }
+          const mainEl = clonedDoc.querySelector("main");
+          if (mainEl) {
+            mainEl.classList.add("pdf-export");
+            mainEl.style.width = `${PDF_CONTENT_PX}px`;
+            mainEl.style.maxWidth = `${PDF_CONTENT_PX}px`;
+            mainEl.style.boxSizing = "border-box";
+          }
+          clonedDoc.querySelectorAll("img").forEach((img) => {
+            img.style.maxWidth = "100%";
+            img.style.height = "auto";
+            img.style.objectFit = "contain";
+          });
+        },
+      },
+      jsPDF: {
+        unit: "mm",
+        format: "a4",
+        orientation: "portrait",
+        compress: true,
+      },
+      pagebreak: {
+        mode: ["css", "legacy"],
+        avoid: ["h2", "h3"],
+      },
+    };
+
+    try {
+      await html2pdf().set(opt).from(element).save();
     } catch (error) {
       console.error("Error generating PDF:", error);
-      downloadPdfBtn.disabled = false;
-      downloadPdfBtn.textContent = "❌ Error - Try Again";
+      downloadPdfBtn.textContent = "❌ Error — try again";
       setTimeout(() => {
-        downloadPdfBtn.textContent = "📄 Download as PDF";
-      }, 3000);
+        downloadPdfBtn.textContent = originalText;
+      }, 3500);
+    } finally {
+      element.classList.remove("pdf-export");
+      if (header) header.style.display = prev.header;
+      if (footer) footer.style.display = prev.footer;
+      if (drawer) drawer.style.display = prev.drawer;
+      downloadPdfBtn.disabled = false;
+      if (downloadPdfBtn.textContent !== "❌ Error — try again") {
+        downloadPdfBtn.textContent = originalText;
+      }
     }
   });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initPdfDownload);
+} else {
+  initPdfDownload();
 }
 
 // Slideshow functionality
