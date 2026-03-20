@@ -1314,302 +1314,263 @@ textarea:focus {
   }
 }
 
-/* PDF export (html2pdf): fixed width, no 100vh/overflow clipping, allow natural page breaks */
-main.pdf-export,
-main.pdf-export * {
-  box-sizing: border-box !important;
-  min-width: 0 !important;
-}
-
-main.pdf-export {
-  width: 700px !important;
-  max-width: 700px !important;
-  margin: 0 auto !important;
-  padding: 14px 16px 20px !important;
-  background: #0a1628 !important;
-  color: #f4f4f4 !important;
-  font-size: 0.82rem !important;
-  line-height: 1.45 !important;
-  overflow: visible !important;
-  -webkit-print-color-adjust: exact !important;
-  print-color-adjust: exact !important;
-}
-
-main.pdf-export .container,
-main.pdf-export .hero-layout {
-  width: 100% !important;
-  max-width: 100% !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-/* Hero: drop full-viewport height and clipping so photo + text render */
-main.pdf-export .hero.hero-premium {
-  min-height: 0 !important;
-  height: auto !important;
-  overflow: visible !important;
-  display: block !important;
-  padding: 1rem 0 1.25rem !important;
-  page-break-after: auto !important;
-  break-after: auto !important;
-}
-
-main.pdf-export .hero-bg,
-main.pdf-export .hero-gridlines {
-  display: none !important;
-}
-
-main.pdf-export .hero-layout {
-  display: block !important;
-}
-
-main.pdf-export .hero-left {
-  max-width: 100% !important;
-}
-
-main.pdf-export .hero-eyebrow {
-  font-size: 0.65rem !important;
-  margin-bottom: 0.5rem !important;
-}
-
-main.pdf-export .hero-title {
-  font-size: 1.45rem !important;
-  line-height: 1.2 !important;
-  margin-bottom: 0.5rem !important;
-}
-
-main.pdf-export .hero-subheadline {
-  font-size: 0.95rem !important;
-  margin-bottom: 0.5rem !important;
-}
-
-main.pdf-export .hero-body {
-  font-size: 0.82rem !important;
-  max-width: 100% !important;
-  margin-bottom: 0.75rem !important;
-}
-
-main.pdf-export .hero-ctas-premium {
-  flex-wrap: wrap !important;
-  gap: 0.5rem !important;
-  margin-bottom: 0.75rem !important;
-}
-
-main.pdf-export .hero-right {
-  margin-top: 0.75rem !important;
-}
-
-main.pdf-export .profile-wrap {
-  width: 100% !important;
-  max-width: 220px !important;
-  margin: 0 auto !important;
-}
-
-main.pdf-export .profile-photo {
-  width: 100% !important;
-  max-width: 220px !important;
-  height: auto !important;
-  aspect-ratio: auto !important;
-  object-fit: contain !important;
-  display: block !important;
-  margin: 0 auto !important;
-}
-
-main.pdf-export .hero-stats {
-  margin-top: 0.75rem !important;
-  padding: 0.5rem 0 !important;
-}
-
-main.pdf-export .stats-row {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 0.5rem !important;
-  justify-content: flex-start !important;
-}
-
-main.pdf-export .stat {
-  min-width: 0 !important;
-}
-
-main.pdf-export .stat-value {
-  font-size: 1.1rem !important;
-}
-
-main.pdf-export .stat-label {
-  font-size: 0.65rem !important;
-}
-
-/* Sections: allow breaks (avoiding whole sections caused vertical overflow) */
-main.pdf-export section.panel {
-  page-break-inside: auto !important;
-  break-inside: auto !important;
-  margin-bottom: 1.25rem !important;
-  padding: 1rem 1rem !important;
-}
-
-main.pdf-export .panel header {
-  margin-bottom: 0.65rem !important;
-}
-
-main.pdf-export h2 {
-  font-size: 1.2rem !important;
-  line-height: 1.25 !important;
-  margin: 0 0 0.5rem !important;
-  page-break-after: avoid !important;
-}
-
-main.pdf-export h3 {
-  font-size: 1rem !important;
-  line-height: 1.25 !important;
-  margin: 0.85rem 0 0.35rem !important;
-  page-break-after: avoid !important;
-}
-
-main.pdf-export h4 {
-  font-size: 0.9rem !important;
-}
-
-main.pdf-export p,
-main.pdf-export li {
-  font-size: 0.8rem !important;
-}
-
-main.pdf-export .meta,
-main.pdf-export .eyebrow {
-  font-size: 0.72rem !important;
-}
-
-main.pdf-export .timeline article,
-main.pdf-export .project-card {
-  page-break-inside: auto !important;
-  break-inside: auto !important;
-  margin-bottom: 1rem !important;
-  padding: 0.85rem !important;
-}
-
-main.pdf-export .contact-grid {
-  display: block !important;
-  gap: 0 !important;
-}
-
-main.pdf-export .cta-buttons {
-  flex-direction: column !important;
-  align-items: stretch !important;
-  gap: 0.5rem !important;
-}
-
-main.pdf-export .contact-image-wrapper {
-  margin-top: 0.75rem !important;
-}
-
-main.pdf-export .contact-image,
-main.pdf-export .contact-image-wrapper img {
-  max-width: 100% !important;
-  width: 100% !important;
-  height: auto !important;
-  max-height: 240px !important;
-  object-fit: contain !important;
-}
-
-main.pdf-export #featured .about-media {
-  display: block !important;
-  margin: 0.75rem auto !important;
-  max-width: 100% !important;
-}
-
-main.pdf-export #featured .about-media img {
-  max-height: 260px !important;
-}
-
-main.pdf-export .skill-grid,
-main.pdf-export .highlight-grid {
-  display: block !important;
-}
-
-main.pdf-export .skill-card,
-main.pdf-export .highlight-grid article {
-  width: 100% !important;
-  margin-bottom: 0.5rem !important;
-  break-inside: auto !important;
-  page-break-inside: auto !important;
-}
-
-main.pdf-export .project-images {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.5rem !important;
-}
-
-main.pdf-export .project-images .project-image {
-  width: 100% !important;
-  max-width: 100% !important;
-  max-height: 200px !important;
-  object-fit: contain !important;
-}
-
-main.pdf-export .about-wrapper {
-  display: block !important;
-}
-
-main.pdf-export .about-media {
-  float: none !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 0 0.65rem !important;
-}
-
-main.pdf-export .about-media img,
-main.pdf-export #featured .about-media img,
-main.pdf-export .featured-image,
-main.pdf-export .skills-image img {
-  max-width: 100% !important;
-  width: 100% !important;
-  height: auto !important;
-  max-height: 220px !important;
-  object-fit: contain !important;
-}
-
-main.pdf-export .advisory-collage {
-  max-width: 100% !important;
-  max-height: 240px !important;
-  object-fit: contain !important;
-}
-
-main.pdf-export .btn {
-  padding: 0.45rem 0.85rem !important;
-  font-size: 0.75rem !important;
-}
-
-main.pdf-export img {
-  max-width: 100% !important;
-  height: auto !important;
-  object-fit: contain !important;
-}
-
-main.pdf-export .company-logo {
-  max-height: 22px !important;
-  padding: 2px 6px !important;
-}
-
+/* --------------------------------------------------------------------------
+   Print / Save as PDF (Chrome: Print → Save as PDF)
+   Replaces html2pdf/html2canvas — those rasterized a narrow clipped strip.
+   -------------------------------------------------------------------------- */
 @media print {
   @page {
-    margin: 10mm;
-    size: A4;
+    margin: 14mm 12mm 14mm 12mm; /* slightly larger top/bottom; keep side margins similar */
+    size: A4 portrait;
   }
-  
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #0a1628 !important;
+  }
+
+  .site-header,
+  .site-footer,
+  .nav-drawer {
+    display: none !important;
+  }
+
+  /* Hide chrome that does not belong on a CV PDF (do not hide a.btn — contact links) */
+  .hero-ctas-premium,
+  #contact-form,
+  .form-status,
+  button {
+    display: none !important;
+  }
+
+  /* Contact CTAs: strip button chrome, keep as readable links */
+  main .cta-buttons .btn {
+    display: inline-flex !important;
+    border: 1px solid #ccc !important;
+    background: #fff !important;
+    color: #0a1628 !important;
+    box-shadow: none !important;
+    padding: 0.2rem 0.5rem !important;
+    font-size: 9pt !important;
+    text-decoration: none !important;
+  }
+
+  main,
+  main * {
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+  }
+
   main {
-    page-break-inside: avoid;
+    --container: 100% !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
   }
-  
-  .panel {
-    page-break-inside: avoid;
-    page-break-after: auto;
+
+  main .container,
+  main .hero-layout {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
-  
-  .hero {
+
+  main .hero.hero-premium {
+    min-height: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+    display: block !important;
+    padding: 0 0 0.5rem !important;
+    background: #f5f7fb !important;
+    color: #0a1628 !important;
     page-break-after: avoid;
+    break-inside: avoid;
+  }
+
+  main .hero-bg,
+  main .hero-gridlines {
+    display: none !important;
+  }
+
+  main .hero-layout {
+    display: block !important;
+  }
+
+  main .hero-eyebrow {
+    color: #5c4a1c !important;
+    font-size: 8pt !important;
+  }
+
+  main .hero-title {
+    font-size: 18pt !important;
+    line-height: 1.2 !important;
+    color: #0a1628 !important;
+  }
+
+  main .hero-subheadline,
+  main .hero-body {
+    font-size: 10pt !important;
+    color: #1a2a44 !important;
+    max-width: 100% !important;
+  }
+
+  main .profile-wrap {
+    width: 100% !important;
+    max-width: 200px !important;
+    margin: 0.5rem auto !important;
+  }
+
+  main .profile-photo {
+    width: 100% !important;
+    max-width: 200px !important;
+    height: auto !important;
+    object-fit: contain !important;
+    border: 2px solid #c9a84c !important;
+    box-shadow: none !important;
+  }
+
+  main .hero-stats {
+    padding: 0.35rem 0 !important;
+    border-top: 1px solid #ddd !important;
+    margin-top: 0.35rem !important;
+  }
+
+  main .stats-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.35rem !important;
+  }
+
+  main .stat-value {
+    font-size: 12pt !important;
+    color: #0a1628 !important;
+  }
+
+  main .stat-label {
+    font-size: 7pt !important;
+    color: #444 !important;
+  }
+
+  main section.panel {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 0.75rem !important;
+    padding: 0.35rem 0 !important;
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+
+  main .panel h2 {
+    font-size: 14pt !important;
+    color: #0a1628 !important;
+    page-break-after: avoid;
+  }
+
+  main .panel h3 {
+    font-size: 11pt !important;
+    page-break-after: avoid;
+  }
+
+  main .panel h4 {
+    font-size: 10pt !important;
+  }
+
+  main p,
+  main li {
+    font-size: 9pt !important;
+    color: #1a2a44 !important;
+  }
+
+  main .meta,
+  main .eyebrow {
+    font-size: 8pt !important;
+    color: #555 !important;
+  }
+
+  main .timeline article,
+  main .projects .project-card,
+  main .skill-card,
+  main .highlight-grid article,
+  main .duo article,
+  main form {
+    overflow: visible !important;
+    transform: none !important;
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    background: #fafafa !important;
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  main .timeline article::before,
+  main .projects .project-card::before,
+  main .skill-card::before,
+  main .highlight-grid article::before {
+    display: none !important;
+  }
+
+  main .contact-grid {
+    display: block !important;
+  }
+
+  main .contact-image-wrapper {
+    margin-top: 0.25rem !important;
+  }
+
+  main .contact-image,
+  main .contact-image-wrapper img {
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 220px !important;
+    object-fit: contain !important;
+  }
+
+  main .project-images {
+    flex-direction: column !important;
+  }
+
+  main .project-images .project-image {
+    max-width: 100% !important;
+    max-height: 200px !important;
+    object-fit: contain !important;
+  }
+
+  main .about-wrapper {
+    display: block !important;
+  }
+
+  main .about-media {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 0.35rem !important;
+  }
+
+  main img {
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  main .company-logo {
+    max-height: 18px !important;
+  }
+
+  main a {
+    color: #1a3a6e !important;
+    text-decoration: underline !important;
   }
 }
 

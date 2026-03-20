@@ -19,8 +19,8 @@ A bold, colorful portfolio website showcasing 25+ years of enterprise cloud tran
 ## Setup
 
 1. Clone this repository
-2. Open `index.html` in your web browser
-3. Update the Formspree form ID in `index.html` (line 252) to enable contact form submissions
+2. Open `index.html` in your browser, **or** preview like GitHub Pages by running in this folder: `python3 -m http.server 8080` → open http://localhost:8080
+3. Update the Formspree form ID in `index.html` (contact form) if needed
 
 ## Contact
 

@@ -83,8 +83,13 @@
       </nav>
 
       <div class="header-actions">
-        <button id="download-pdf" class="btn btn-gold" type="button">
-          Download CV
+        <button
+          id="download-pdf"
+          class="btn btn-gold"
+          type="button"
+          title="Opens print — in Chrome choose Destination: Save as PDF"
+        >
+          Save as PDF
         </button>
         <button class="nav-toggle" aria-label="Open menu" data-nav-toggle>
           <span class="nav-toggle-bars" aria-hidden="true"></span>
@@ -107,8 +112,8 @@
           <a href="#contact">Contact</a>
         </nav>
         <div class="drawer-cta">
-          <button class="btn btn-gold" type="button" data-download-cv>
-            Download CV
+          <button class="btn btn-gold" type="button" data-download-cv title="Print — Save as PDF in Chrome">
+            Save as PDF
           </button>
           <a class="btn btn-ghost" href="https://www.linkedin.com/in/shabeermohamed/" target="_blank" rel="noreferrer">
             Connect on LinkedIn →
@@ -686,8 +691,6 @@
       <p>© <span id="year"></span> Shabeer Mohamed. Built bold & colorful.</p>
     </footer>
 
-    <!-- html2pdf must load before script.js so PDF export can use the global -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="script.js" defer></script>
   </body>
 </html>
