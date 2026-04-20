@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog | Shabeer Mohamed</title>
+    <link rel="canonical" href="https://www.shabeer.online/blog/" />
+    <meta name="robots" content="index,follow" />
+    <meta name="description" content="Thought leadership and notes from Shabeer Mohamed." />
+    <meta name="theme-color" content="#0a1628" />
+    <link rel="icon" href="../logo1.png" type="image/png" sizes="96x96" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="wordmark" href="/">Shabeer</a>
+
+      <nav class="main-nav" data-nav>
+        <a href="/#about">About</a>
+        <a href="/#experience">Experience</a>
+        <a href="/#skills">Expertise</a>
+        <a href="/#antigravity">AntiGravity</a>
+        <a href="/#recommendations">Recognition</a>
+        <a href="/#featured">Featured</a>
+        <a href="/#projects">Advisory</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a
+          class="nav-launch-cta"
+          href="https://app.shabeer.online"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Launch App →
+        </a>
+        <button
+          id="download-pdf"
+          class="btn btn-gold"
+          type="button"
+          title="Opens print — in Chrome choose Destination: Save as PDF"
+        >
+          Save as PDF
+        </button>
+        <button class="nav-toggle" aria-label="Open menu" data-nav-toggle>
+          <span class="nav-toggle-bars" aria-hidden="true"></span>
+        </button>
+      </div>
+    </header>
+
+    <div class="nav-drawer" data-drawer aria-hidden="true">
+      <div class="nav-drawer-inner">
+        <button class="drawer-close" type="button" aria-label="Close menu" data-drawer-close>✕</button>
+        <nav class="drawer-links" aria-label="Mobile navigation">
+          <a href="/#about">About</a>
+          <a href="/#experience">Experience</a>
+          <a href="/#skills">Expertise</a>
+          <a href="/#antigravity">AntiGravity</a>
+          <a href="/#recommendations">Recognition</a>
+          <a href="/#featured">Featured</a>
+          <a href="/#projects">Advisory</a>
+          <a href="/blog/">Blog</a>
+          <a href="/#contact">Contact</a>
+        </nav>
+        <div class="drawer-cta">
+          <button class="btn btn-gold" type="button" id="download-pdf-drawer" title="Print — Save as PDF in Chrome">
+            Save as PDF
+          </button>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/shabeermohamed/" target="_blank" rel="noreferrer">
+            Connect on LinkedIn →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <main class="blog-page-main">
+      <section class="panel blog-list-panel">
+        <header>
+          <p class="eyebrow">Blog</p>
+          <h2>Thought leadership &amp; notes</h2>
+          <p class="section-subtitle">Long-form ideas, cloud and enterprise sales, and lessons from the field.</p>
+        </header>
+        <p class="blog-loading" id="blog-list-status">Loading posts…</p>
+        <ul class="blog-post-list" id="blog-post-list" hidden></ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-logo">
+        <img src="../logo2.png" alt="Shabeer personal logo" loading="lazy" decoding="async" />
+      </div>
+      <div class="footer-badges" aria-label="Social and contact links">
+        <a class="footer-badge" href="https://x.com/shabeermohamed" target="_blank" rel="noreferrer" aria-label="Twitter profile">
+          <span class="footer-badge-icon" aria-hidden="true">X</span>
+          <span class="footer-badge-text">Twitter</span>
+        </a>
+        <a class="footer-badge" href="https://www.linkedin.com/in/shabeermohamed/" target="_blank" rel="noreferrer" aria-label="LinkedIn profile">
+          <span class="footer-badge-icon" aria-hidden="true">in</span>
+          <span class="footer-badge-text">LinkedIn</span>
+        </a>
+        <a class="footer-badge" href="mailto:shabeer_mk@outlook.com" aria-label="Email Shabeer">
+          <span class="footer-badge-icon" aria-hidden="true">@</span>
+          <span class="footer-badge-text">Email</span>
+        </a>
+      </div>
+      <p>© <span id="year"></span> Shabeer Mohamed. Built bold &amp; colorful.</p>
+      <p class="footer-antigravity">
+        <a href="https://app.shabeer.online" target="_blank" rel="noopener noreferrer">AntiGravity — app.shabeer.online</a>
+      </p>
+    </footer>
+
+    <script src="./blog-shell.js" defer></script>
+    <script>
+      document.getElementById("download-pdf-drawer")?.addEventListener("click", () => {
+        document.getElementById("download-pdf")?.click();
+      });
+
+      (async function () {
+        const statusEl = document.getElementById("blog-list-status");
+        const listEl = document.getElementById("blog-post-list");
+        try {
+          const res = await fetch("./posts-manifest.json", { cache: "no-store" });
+          if (!res.ok) throw new Error("Manifest not found");
+          const data = await res.json();
+          const posts = Array.isArray(data.posts) ? data.posts : [];
+          posts.sort((a, b) => String(b.date).localeCompare(String(a.date)));
+          if (posts.length === 0) {
+            statusEl.textContent = "No posts yet.";
+            return;
+          }
+          statusEl.hidden = true;
+          listEl.hidden = false;
+          listEl.innerHTML = posts
+            .map(
+              (p) => `
+            <li class="blog-post-card">
+              <a class="blog-post-card-link" href="./post.html?slug=${encodeURIComponent(p.slug)}">
+                <time class="blog-post-date" datetime="${p.date}">${p.date}</time>
+                <h3 class="blog-post-title">${escapeHtml(p.title)}</h3>
+                <p class="blog-post-excerpt">${escapeHtml(p.excerpt || "")}</p>
+                <span class="blog-post-read">Read post →</span>
+              </a>
+            </li>`
+            )
+            .join("");
+        } catch (e) {
+          statusEl.textContent = "Could not load the post list. Try again later.";
+        }
+      })();
+
+      function escapeHtml(s) {
+        return String(s)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+    </script>
+  </body>
+</html>

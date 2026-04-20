@@ -32,12 +32,19 @@ const handleNavClick = (event, href) => {
 };
 
 navLinks.forEach((link) => {
-  link.addEventListener("click", (event) => handleNavClick(event, link.getAttribute("href")));
+  link.addEventListener("click", (event) => {
+    const href = link.getAttribute("href") || "";
+    if (!href.startsWith("#")) return;
+    handleNavClick(event, href);
+  });
 });
 
 drawerLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
-    handleNavClick(event, link.getAttribute("href"));
+    const href = link.getAttribute("href") || "";
+    if (href.startsWith("#")) {
+      handleNavClick(event, href);
+    }
     setDrawerOpen(false);
   });
 });

@@ -1,0 +1,11 @@
+{
+  "posts": [
+    {
+      "slug": "hello-world",
+      "file": "2024-01-01-hello-world.md",
+      "date": "2024-01-01",
+      "title": "Your first post title here",
+      "excerpt": "A one-line summary of the post."
+    }
+  ]
+}
