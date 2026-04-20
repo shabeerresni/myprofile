@@ -72,7 +72,9 @@ const observer = new IntersectionObserver(
 sections.forEach((section) => observer.observe(section));
 
 // Entrance animations
-const animTargets = document.querySelectorAll(".panel, .timeline article, .skill-card, .highlight-grid article, .projects .project-card");
+const animTargets = document.querySelectorAll(
+  ".panel, .timeline article, .skill-card, .ag-card, .highlight-grid article, .projects .project-card"
+);
 animTargets.forEach((el) => el.classList.add("reveal"));
 
 const revealObserver = new IntersectionObserver(
