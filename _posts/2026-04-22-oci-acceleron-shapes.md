@@ -35,7 +35,7 @@ AWS built Graviton to serve digital-native companies at scale. Containerized mic
 
 But enterprise workloads are a different animal entirely.
 
-Legacy ERP systems running on Oracle Database. Real-time financial transaction processing. SAP on bare metal. High-frequency simulation workloads. Industrial IoT data lakes. These workloads weren't born cloud-native — they were born in data centers where the hardware was predictable, dedicated, and uncompromised. When you lift them to the cloud, they need an environment that mirrors that predictability.
+Legacy ERP systems running on Oracle Database. Real-time financial transaction processing. CoreBanking Systems on bare metal. High-frequency simulation workloads. Industrial IoT data lakes. These workloads weren't born cloud-native — they were born in data centers where the hardware was predictable, dedicated, and uncompromised. When you lift them to the cloud, they need an environment that mirrors that predictability.
 
 OCI was designed from the start with these workloads in mind. And Acceleron shapes are the logical conclusion of that design thesis: maximum compute fidelity, minimum abstraction overhead, purpose-built for enterprise-grade performance.
 
