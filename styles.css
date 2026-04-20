@@ -1062,6 +1062,11 @@ form {
   text-decoration-color: var(--color-gold);
 }
 
+/* Blog nav link hidden until there are more posts — delete this block to show again */
+.nav-blog-hidden {
+  display: none !important;
+}
+
 /* Ensure nav links don't inherit visited color */
 .main-nav a:visited,
 .drawer-links a:visited {
