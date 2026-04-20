@@ -1,6 +1,13 @@
 {
   "posts": [
     {
+      "slug": "oci-acceleron-shapes",
+      "file": "2026-04-22-oci-acceleron-shapes.md",
+      "date": "2026-04-22",
+      "title": "Oracle's Acceleron Shapes: The Beast Gets Sharper Teeth",
+      "excerpt": "The cloud compute race has a new front-runner — and it isn't even close."
+    },
+    {
       "slug": "hello-world",
       "file": "2024-01-01-hello-world.md",
       "date": "2024-01-01",
