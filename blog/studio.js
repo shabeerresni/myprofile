@@ -303,7 +303,7 @@ Tone: executive, direct, practical. No corporate fluff.`;
     } catch (e) {
       const msg = String(e.message || e);
       setStatus(
-        `${msg} — If this says “Failed to fetch” or CORS, expand “Browser blocked…” below and use Copy prompt / Apply JSON.`,
+        `${msg} — If you see “Failed to fetch”, open “Plan B — if Generate does not work” below and use ChatGPT instead.`,
         "err"
       );
     } finally {

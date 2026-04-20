@@ -85,12 +85,21 @@
           <p class="eyebrow">Private</p>
           <h2>AI-powered Blog Studio</h2>
           <p class="section-subtitle">
-            Not linked in the public menu. Bookmark this URL. Keys stay in your browser only (
-            <strong>localStorage</strong>).
+            Not in the public menu — bookmark this page. Any keys you save stay only on this computer.
           </p>
         </header>
 
         <div class="studio-card">
+          <div class="studio-howto" aria-label="How to use this page">
+            <p class="studio-howto-title">How to use this page (simple)</p>
+            <ol class="studio-howto-list">
+              <li>Fill the four boxes below (topic, keywords, links if any, raw ideas).</li>
+              <li>Click <strong>Generate blog post</strong>. Your drafts appear in the <strong>Blog post</strong> and <strong>LinkedIn</strong> tabs right under the button.</li>
+              <li>If that button errors, open <strong>Plan B (ChatGPT)</strong> and follow the two steps there instead.</li>
+              <li>To put the article on your site: check date and web address (slug), then either <strong>Download .md</strong> and add the file to Git yourself, or <strong>Publish to GitHub</strong> if you saved a token in <strong>Keys at the bottom</strong>.</li>
+            </ol>
+          </div>
+
           <label class="studio-label" for="studio-topic">Topic / title idea</label>
           <input
             class="studio-input"
@@ -142,35 +151,7 @@
 
           <p class="studio-status" id="studio-status" role="status"></p>
 
-          <details class="studio-manual">
-            <summary>Browser blocked the API? Copy prompt or paste JSON</summary>
-            <p class="studio-settings-note">
-              OpenAI often blocks direct calls from websites (CORS). Use <strong>Copy prompt for ChatGPT</strong>, paste into
-              ChatGPT, then paste the model’s JSON reply below and click <strong>Apply JSON</strong>.
-            </p>
-            <button type="button" class="btn btn-ghost studio-copy-prompt" id="studio-copy-prompt">
-              Copy prompt for ChatGPT
-            </button>
-            <label class="studio-label" for="studio-import-json">Paste JSON (<code>blogMarkdown</code> + <code>linkedinPost</code>)</label>
-            <textarea class="studio-textarea studio-textarea--short" id="studio-import-json" rows="6" placeholder='{"blogMarkdown":"...","linkedinPost":"..."}'></textarea>
-            <button type="button" class="btn btn-gold" id="studio-import-apply">Apply JSON</button>
-          </details>
-
-          <div class="studio-publish-row">
-            <div class="studio-publish-fields">
-              <label class="studio-label studio-label--small" for="studio-date">Post date</label>
-              <input class="studio-input" id="studio-date" type="date" />
-              <label class="studio-label studio-label--small" for="studio-slug">Slug (URL)</label>
-              <input class="studio-input" id="studio-slug" type="text" placeholder="e.g. pipeline-wishful-thinking" />
-              <label class="studio-label studio-label--small" for="studio-excerpt">Excerpt (listing)</label>
-              <input class="studio-input" id="studio-excerpt" type="text" placeholder="One line; auto-filled after generate if empty" />
-            </div>
-            <div class="studio-publish-buttons">
-              <button type="button" class="btn btn-gold" id="studio-publish">Publish to site (GitHub)</button>
-              <button type="button" class="btn btn-ghost" id="studio-download-md">Download .md only</button>
-            </div>
-          </div>
-
+          <p class="studio-section-label">Your drafts</p>
           <div class="studio-output">
             <div class="studio-tabs" role="tablist">
               <button type="button" class="studio-tab is-active" id="tab-blog" role="tab">Blog post</button>
@@ -185,10 +166,42 @@
               </div>
             </div>
           </div>
+
+          <p class="studio-section-label">Put it on your website</p>
+          <div class="studio-publish-row">
+            <div class="studio-publish-fields">
+              <label class="studio-label studio-label--small" for="studio-date">Post date</label>
+              <input class="studio-input" id="studio-date" type="date" />
+              <label class="studio-label studio-label--small" for="studio-slug">Web address ending (slug)</label>
+              <input class="studio-input" id="studio-slug" type="text" placeholder="e.g. pipeline-wishful-thinking" />
+              <label class="studio-label studio-label--small" for="studio-excerpt">Short line for the blog list</label>
+              <input class="studio-input" id="studio-excerpt" type="text" placeholder="Fills in after generate if you leave it empty" />
+            </div>
+            <div class="studio-publish-buttons">
+              <button type="button" class="btn btn-gold" id="studio-publish">Publish to site (GitHub)</button>
+              <button type="button" class="btn btn-ghost" id="studio-download-md">Download .md file</button>
+            </div>
+          </div>
+
+          <details class="studio-manual">
+            <summary>Plan B — if Generate does not work (use ChatGPT)</summary>
+            <p class="studio-settings-note">
+              Many browsers block the site from talking to OpenAI directly. That is normal. Do this instead:
+              <strong>1)</strong> Click <strong>Copy prompt for ChatGPT</strong>.
+              <strong>2)</strong> Paste into ChatGPT (or any AI you use). <strong>3)</strong> Copy the reply (the JSON only).
+              <strong>4)</strong> Paste it in the box below and click <strong>Apply JSON</strong>.
+            </p>
+            <button type="button" class="btn btn-ghost studio-copy-prompt" id="studio-copy-prompt">
+              Copy prompt for ChatGPT
+            </button>
+            <label class="studio-label" for="studio-import-json">Paste the JSON here</label>
+            <textarea class="studio-textarea studio-textarea--short" id="studio-import-json" rows="6" placeholder='{"blogMarkdown":"...","linkedinPost":"..."}'></textarea>
+            <button type="button" class="btn btn-gold" id="studio-import-apply">Apply JSON</button>
+          </details>
         </div>
 
         <div class="studio-settings">
-          <button type="button" class="studio-settings-toggle" id="settings-toggle">Connection settings ▾</button>
+          <button type="button" class="studio-settings-toggle" id="settings-toggle">Keys at the bottom (OpenAI + GitHub) ▾</button>
           <div class="studio-settings-panel" id="settings-panel">
             <p class="studio-settings-note">
               OpenAI key: from
