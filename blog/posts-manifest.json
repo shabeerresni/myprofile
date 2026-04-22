@@ -1,6 +1,13 @@
 {
   "posts": [
     {
+      "slug": "designing-sales-systems-predictability",
+      "file": "2026-04-29-designing-sales-systems-predictability.md",
+      "date": "2026-04-29",
+      "title": "Designing Sales Systems for Predictability",
+      "excerpt": "Revenue predictability is not an outcome problem. It is a design problem—and design problems are not fixed by inspection."
+    },
+    {
       "slug": "oci-acceleron-shapes",
       "file": "2026-04-22-oci-acceleron-shapes.md",
       "date": "2026-04-22",
