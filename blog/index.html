@@ -142,7 +142,7 @@
             .map(
               (p) => `
             <li class="blog-post-card">
-              <a class="blog-post-card-link" href="./post.html?slug=${encodeURIComponent(p.slug)}">
+              <a class="blog-post-card-link" href="${escapeHtml(p.url || `./post.html?slug=${encodeURIComponent(p.slug)}`)}">
                 <time class="blog-post-date" datetime="${p.date}">${p.date}</time>
                 <h3 class="blog-post-title">${escapeHtml(p.title)}</h3>
                 <p class="blog-post-excerpt">${escapeHtml(p.excerpt || "")}</p>

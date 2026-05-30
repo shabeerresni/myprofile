@@ -11,6 +11,11 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://www.shabeer.online/blog/oci-enterprise-cloud-decision.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.shabeer.online/blog/post.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

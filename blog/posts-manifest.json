@@ -1,6 +1,13 @@
 {
   "posts": [
     {
+      "slug": "oci-enterprise-cloud-decision",
+      "url": "./oci-enterprise-cloud-decision.html",
+      "date": "2026-05-30",
+      "title": "The Cloud Decision That Could Make or Break Your Enterprise",
+      "excerpt": "Why OCI is in a league of its own — platform architecture, AI infrastructure, and the partnership force multiplier."
+    },
+    {
       "slug": "designing-sales-systems-predictability",
       "file": "2026-04-29-designing-sales-systems-predictability.md",
       "date": "2026-04-29",
