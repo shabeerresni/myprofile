@@ -42,7 +42,7 @@
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="./oci-post.css" />
   </head>
-  <body>
+  <body class="oci-page">
     <nav class="oci-sticky-crumb" id="oci-sticky-crumb" aria-hidden="true">
       <a href="./">← Back to Blog</a>
     </nav>
@@ -126,6 +126,7 @@
             <h3>Full reference document (PDF)</h3>
             <a href="./The-Cloud-Decision-That-Could-Make-or-Break-Your-Enterprise.pdf" target="_blank" rel="noopener noreferrer">Open / download PDF →</a>
           </header>
+          <p class="oci-pdf-mobile-note">PDF preview works best on desktop — use the link above to open on mobile.</p>
           <iframe
             class="oci-pdf-embed"
             title="The Cloud Decision That Could Make or Break Your Enterprise — PDF"
@@ -341,15 +342,20 @@
           </table>
         </div>
 
-        <figure class="oci-figure reveal">
-          <img
-            src="./Enterprise_Cloud_Platform_Partnership_Strategy.png"
-            alt="Infographic: OCI platform advantage and partnership force multiplier — cost comparison and strategic synergy"
-            width="1200"
-            height="675"
-            loading="lazy"
-            decoding="async"
-          />
+        <figure class="oci-figure oci-figure--infographic reveal">
+          <div class="oci-figure-scroll" tabindex="0" role="region" aria-label="Infographic — swipe horizontally or tap to expand">
+            <button type="button" class="oci-figure-zoom" id="oci-figure-open" aria-label="View infographic full screen">
+              <img
+                src="./Enterprise_Cloud_Platform_Partnership_Strategy.png"
+                alt="Infographic: OCI platform advantage and partnership force multiplier — cost comparison and strategic synergy"
+                width="1200"
+                height="675"
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+          </div>
+          <p class="oci-figure-hint">Swipe to explore · Tap to expand</p>
           <figcaption>OCI Superiority + Expert Partnership = Maximized Enterprise ROI &amp; Long-Term Efficiency</figcaption>
         </figure>
 
@@ -414,6 +420,18 @@
         </p>
       </article>
     </main>
+
+    <div class="oci-lightbox" id="oci-lightbox" hidden role="dialog" aria-modal="true" aria-label="Infographic full screen view">
+      <button type="button" class="oci-lightbox-close" id="oci-lightbox-close" aria-label="Close full screen view">✕</button>
+      <div class="oci-lightbox-scroll">
+        <img
+          src="./Enterprise_Cloud_Platform_Partnership_Strategy.png"
+          alt="Infographic: OCI platform advantage and partnership force multiplier"
+          width="1200"
+          height="675"
+        />
+      </div>
+    </div>
 
     <footer class="site-footer">
       <div class="footer-logo">

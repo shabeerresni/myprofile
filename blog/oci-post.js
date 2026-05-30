@@ -61,4 +61,31 @@
     );
     countEls.forEach((el) => counterObs.observe(el));
   }
+
+  const lightbox = document.getElementById("oci-lightbox");
+  const openBtn = document.getElementById("oci-figure-open");
+  const closeBtn = document.getElementById("oci-lightbox-close");
+
+  if (lightbox && openBtn && closeBtn) {
+    const openLightbox = () => {
+      lightbox.hidden = false;
+      document.body.classList.add("oci-lightbox-open");
+      closeBtn.focus();
+    };
+
+    const closeLightbox = () => {
+      lightbox.hidden = true;
+      document.body.classList.remove("oci-lightbox-open");
+      openBtn.focus();
+    };
+
+    openBtn.addEventListener("click", openLightbox);
+    closeBtn.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !lightbox.hidden) closeLightbox();
+    });
+  }
 })();
