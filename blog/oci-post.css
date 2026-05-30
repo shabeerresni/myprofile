@@ -223,7 +223,7 @@
 
 .oci-pillars {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 1.15rem;
   margin: 1.5rem 0 2rem;
 }
@@ -260,10 +260,6 @@
   margin: 0;
   font-size: 0.95rem;
   color: rgba(232, 232, 232, 0.9);
-}
-
-.oci-pillar--wide {
-  grid-column: 1 / -1;
 }
 
 .oci-table-wrap {
@@ -312,7 +308,7 @@
 
 .oci-stats {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 0.85rem;
   margin: 1.25rem 0 0.5rem;
 }
@@ -334,12 +330,12 @@
 }
 
 .oci-stat-label {
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: var(--muted);
   margin-top: 0.4rem;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 .oci-callout {
@@ -537,21 +533,22 @@
   margin: 0;
 }
 
-@media (min-width: 900px) {
-  .oci-pillars {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+@media (min-width: 480px) {
+  .oci-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .oci-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 768px) {
   .oci-compare,
-  .oci-pillars,
   .oci-partner-grid {
     grid-template-columns: 1fr;
-  }
-
-  .oci-stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .oci-author {
