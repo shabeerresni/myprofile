@@ -628,11 +628,19 @@ form {
   width: auto;
   max-width: 170px;
   object-fit: contain;
+  object-position: center;
   display: inline-block;
+  vertical-align: middle;
   background: rgba(255, 255, 255, 0.96);
-  padding: 4px 8px;
+  padding: 5px 10px;
   border-radius: 12px;
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+  flex-shrink: 0;
+}
+
+.company-logo--pwc {
+  height: 32px;
+  padding: 6px 12px;
 }
 
 @media (max-width: 600px) {
